@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Zorachka\Framework\QueryBus\QueryBusConfig;
-use Zorachka\Framework\Tests\Unit\QueryBus\Datasets\Fetcher;
-use Zorachka\Framework\Tests\Unit\QueryBus\Datasets\Query;
+use Zorachka\Framework\MessageBus\Query\QueryBusConfig;
+use Zorachka\Framework\Tests\Unit\MessageBus\Fixtures\Fetcher;
+use Zorachka\Framework\Tests\Unit\MessageBus\Fixtures\Query;
 
 test('QueryBusConfig should be able to be created with defaults', function () {
     $config = QueryBusConfig::withDefaults();
