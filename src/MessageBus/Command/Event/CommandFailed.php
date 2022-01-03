@@ -10,9 +10,9 @@ final class CommandFailed
 {
     use HasCommand;
 
-    private ?Exception $exception;
+    private Exception $exception;
 
-    private function __construct(string $commandName, ?Exception $exception)
+    private function __construct(string $commandName, Exception $exception)
     {
         $this->commandName = $commandName;
         $this->exception = $exception;
@@ -24,9 +24,9 @@ final class CommandFailed
     }
 
     /**
-     * @return ?Exception
+     * @return Exception
      */
-    public function exception(): ?Exception
+    public function exception(): Exception
     {
         return $this->exception;
     }
