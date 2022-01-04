@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Zorachka\Framework\MessageBus\Middleware\Broker;
 
 use SplQueue;
-use Zorachka\Framework\MessageBus\Middleware\Input;
 use Zorachka\Framework\MessageBus\Middleware\Middleware;
-use Zorachka\Framework\MessageBus\Middleware\Output;
 
 final class SplQueueBroker implements Broker
 {
@@ -16,7 +14,7 @@ final class SplQueueBroker implements Broker
     ) {
     }
 
-    public function __invoke(Input $input): Output
+    public function __invoke(object $input): mixed
     {
         /** @var Middleware $middleware */
         $middleware = $this->queue->dequeue();

@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace Zorachka\Framework\MessageBus\Middleware\Common;
 
 use Psr\Log\LoggerInterface;
-use Zorachka\Framework\MessageBus\Middleware\Broker\Broker;
-use Zorachka\Framework\MessageBus\Middleware\Input;
 use Zorachka\Framework\MessageBus\Middleware\Middleware;
-use Zorachka\Framework\MessageBus\Middleware\Output;
 
 final class LoggingMiddleware implements Middleware
 {
@@ -16,7 +13,7 @@ final class LoggingMiddleware implements Middleware
     {
     }
 
-    public function process(Input $input, Broker $next): Output
+    public function process(object $input, callable $next): mixed
     {
         $this->logger->debug(\sprintf("Starting %s", $input::class));
         $returnValue = $next($input);

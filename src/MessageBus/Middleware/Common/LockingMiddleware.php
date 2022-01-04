@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Zorachka\Framework\MessageBus\Middleware\Common;
 
-use Zorachka\Framework\MessageBus\Middleware\Broker\Broker;
-use Zorachka\Framework\MessageBus\Middleware\Input;
+use Exception;
 use Zorachka\Framework\MessageBus\Middleware\Middleware;
-use Zorachka\Framework\MessageBus\Middleware\Output;
 
 /**
  * If another command is already being executed, locks the command bus and
@@ -27,12 +25,12 @@ final class LockingMiddleware implements Middleware
 
     /**
      * Execute the given command... after other running commands are complete.
-     * @param Input $input
-     * @param Broker $next
-     * @return Output|null
-     * @throws \Exception
+     * @param object $input
+     * @param callable $next
+     * @return mixed
+     * @throws Exception
      */
-    public function process(Input $input, Broker $next): ?Output
+    public function process(object $input, callable $next): mixed
     {
         $this->queue[] = function () use ($input, $next) {
             return $next($input);
@@ -45,7 +43,7 @@ final class LockingMiddleware implements Middleware
 
         try {
             $returnValue = $this->executeQueuedJobs();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->isExecuting = false;
             $this->queue = [];
             throw $e;
