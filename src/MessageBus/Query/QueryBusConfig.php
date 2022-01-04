@@ -23,14 +23,14 @@ final class QueryBusConfig
     }
 
     /**
-     * @param class-string $commandClassName
-     * @param class-string $handlerClassName
+     * @param class-string $queryClassName
+     * @param class-string $fetcherClassName
      * @return QueryBusConfig
      */
-    public function withFetcherFor(string $commandClassName, string $handlerClassName): self
+    public function withFetcherFor(string $queryClassName, string $fetcherClassName): self
     {
         $new = clone $this;
-        $new->fetchersMap[$commandClassName] = $handlerClassName;
+        $new->fetchersMap[$queryClassName] = $fetcherClassName;
 
         return $new;
     }
