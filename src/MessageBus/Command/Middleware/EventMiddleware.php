@@ -9,10 +9,7 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Zorachka\Framework\MessageBus\Command\Event\CommandFailed;
 use Zorachka\Framework\MessageBus\Command\Event\CommandHandled;
 use Zorachka\Framework\MessageBus\Command\Event\CommandReceived;
-use Zorachka\Framework\MessageBus\Middleware\Broker\Broker;
-use Zorachka\Framework\MessageBus\Middleware\Input;
 use Zorachka\Framework\MessageBus\Middleware\Middleware;
-use Zorachka\Framework\MessageBus\Middleware\Output;
 
 final class EventMiddleware implements Middleware
 {
@@ -20,7 +17,7 @@ final class EventMiddleware implements Middleware
     {
     }
 
-    public function process(Input $input, Broker $next): ?Output
+    public function process(object $input, callable $next): mixed
     {
         try {
             $this->eventDispatcher->dispatch(CommandReceived::withCommand($input));

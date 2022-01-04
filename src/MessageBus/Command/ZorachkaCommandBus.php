@@ -12,7 +12,7 @@ final class ZorachkaCommandBus implements CommandBus
     {
     }
 
-    public function handle(Command $command): void
+    public function handle(object $command): void
     {
         $broker = $this->broker;
         $broker($command);

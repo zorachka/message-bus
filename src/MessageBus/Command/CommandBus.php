@@ -6,5 +6,5 @@ namespace Zorachka\Framework\MessageBus\Command;
 
 interface CommandBus
 {
-    public function handle(Command $command): void;
+    public function handle(object $command): void;
 }

@@ -8,6 +8,7 @@ use Psr\Container\ContainerInterface;
 use Zorachka\Framework\Container\ServiceProvider;
 use Zorachka\Framework\MessageBus\Command\Middleware\CommandHandlerMiddleware;
 use Zorachka\Framework\MessageBus\Middleware\Broker\SplQueueBrokerFactory;
+use function array_map;
 
 final class CommandBusServiceProvider implements ServiceProvider
 {
@@ -21,10 +22,10 @@ final class CommandBusServiceProvider implements ServiceProvider
                 /** @var CommandBusConfig $config */
                 $config = $container->get(CommandBusConfig::class);
 
-                $handlers = \array_map(function ($handlerClassName) use ($container) {
+                $handlers = array_map(function ($handlerClassName) use ($container) {
                     return $container->get($handlerClassName);
                 }, $config->handlersMap());
-                $middlewares = \array_map(function ($middlewareClassName) use ($container) {
+                $middlewares = array_map(function ($middlewareClassName) use ($container) {
                     return $container->get($middlewareClassName);
                 }, $config->middlewares());
 
