@@ -7,7 +7,7 @@ namespace Zorachka\Framework\MessageBus\Event;
 interface EventBus
 {
     /**
-     * @param Event[] $events
+     * @param object[] $events
      * @return void
      */
     public function dispatch(array $events): void;

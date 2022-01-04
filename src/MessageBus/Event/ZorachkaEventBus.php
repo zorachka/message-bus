@@ -14,14 +14,13 @@ final class ZorachkaEventBus implements EventBus
     }
 
     /**
-     * @param Event[] $events
+     * @param object[] $events
      * @return void
      */
     public function dispatch(array $events): void
     {
         $dispatch = $this->broker;
         foreach ($events as $event) {
-            /** @var Event $output */
             $dispatch($event);
         }
     }

@@ -8,9 +8,7 @@ use SplQueue;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Zorachka\Framework\Container\ServiceProvider;
-use Zorachka\Framework\MessageBus\Command\Middleware\CommandHandlerMiddleware;
 use Zorachka\Framework\MessageBus\Event\Middleware\EventDispatcherMiddleware;
-use Zorachka\Framework\MessageBus\Middleware\Broker\SplQueueBroker;
 use Zorachka\Framework\MessageBus\Middleware\Broker\SplQueueBrokerFactory;
 
 final class EventBusServiceProvider implements ServiceProvider

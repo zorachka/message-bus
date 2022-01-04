@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Zorachka\Framework\MessageBus\Event;
 
-use Zorachka\Framework\MessageBus\Command\CommandBusConfig;
-
 final class EventBusConfig
 {
     private array $middlewares;
@@ -23,7 +21,7 @@ final class EventBusConfig
 
     /**
      * @param class-string $middlewareClassName
-     * @return CommandBusConfig
+     * @return EventBusConfig
      */
     public function withMiddleware(string $middlewareClassName): self
     {
