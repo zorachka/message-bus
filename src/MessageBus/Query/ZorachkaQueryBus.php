@@ -12,12 +12,10 @@ final class ZorachkaQueryBus implements QueryBus
     {
     }
 
-    public function fetch(Query $query): Result
+    public function fetch(object $query): mixed
     {
         $fetch = $this->broker;
-        /** @var Result $result */
-        $result = $fetch($query);
 
-        return $result;
+        return $fetch($query);
     }
 }

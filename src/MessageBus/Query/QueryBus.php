@@ -6,5 +6,5 @@ namespace Zorachka\Framework\MessageBus\Query;
 
 interface QueryBus
 {
-    public function fetch(Query $query): Result;
+    public function fetch(object $query): mixed;
 }
