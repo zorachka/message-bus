@@ -13,8 +13,8 @@ final class EventDispatcherMiddleware implements Middleware
     {
     }
 
-    public function process(object $event, callable $next): mixed
+    public function process(object $input, callable $next): object
     {
-        return $this->eventDispatcher->dispatch($event);
+        return $this->eventDispatcher->dispatch($input);
     }
 }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Zorachka\Framework\MessageBus\Event;
 
-use SplQueue;
 use Psr\Container\ContainerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Zorachka\Framework\Container\ServiceProvider;
